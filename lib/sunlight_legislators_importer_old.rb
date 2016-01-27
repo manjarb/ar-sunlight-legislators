@@ -1,7 +1,6 @@
 require 'csv'
-# require_relative '../app/models/representative'
-# require_relative '../app/models/senator'
-require_relative '../app/models/person'
+require_relative '../app/models/representative'
+require_relative '../app/models/senator'
 
 class SunlightLegislatorsImporter
   def self.import(filename)
@@ -19,20 +18,19 @@ class SunlightLegislatorsImporter
                       :twitter_id => row['twitter_id'],
                       :active => row['in_office'],
                       :party => row['party'],
-                      :state => row['state'],
-                      :type => row['title']
+                      :state => row['state']
                     }
       print person_hash
       puts ""
 
-      # if row['title'].to_s.downcase == "rep"
-      #   Representative.create!(person_hash)
-      #   #puts "made rep"
-      # elsif row['title'].to_s.downcase == "sen"
-      #   Senator.create!(person_hash)
-      #   #puts "made sen"
-      # end
-      Person.create!(person_hash)
+      if row['title'].to_s.downcase == "rep"
+        Representative.create!(person_hash)
+        #puts "made rep"
+      elsif row['title'].to_s.downcase == "sen"
+        Senator.create!(person_hash)
+        #puts "made sen"
+      end
+      
       # row.each do |field, value|
       #   # TODO: begin
       #   print field

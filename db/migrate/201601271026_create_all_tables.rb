@@ -37,6 +37,7 @@ class CreateAllTables < ActiveRecord::Migration
         # t.belongs_to :state, index: true
     end
 
+
     # create_table :parties do |t|
     #   t.string :name
     # end
