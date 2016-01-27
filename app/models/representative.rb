@@ -3,6 +3,14 @@ require_relative '../../db/config'
 class Representative < ActiveRecord::Base
   # belongs_to :party
   # belongs_to :state
+  def all
+  	Representative.all.length
+  end
+
+  def active_all
+  	Representative.where(active: 1).length
+  end
+  
   def state(state)
   	representatives = Representative.where(state: state).order('name')
   	#senators_arr = {}

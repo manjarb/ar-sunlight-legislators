@@ -4,7 +4,11 @@ class Senator < ActiveRecord::Base
   # belongs_to :party
   # belongs_to :state
   def all
-  	Senator.all
+  	Senator.all.length
+  end
+
+  def active_all
+  	Senator.where(active: 1).length
   end
 
   def state(state)
